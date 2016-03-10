@@ -30,8 +30,18 @@
 }
 
 - (IBAction)handleTapGestureRecognizer:(UITapGestureRecognizer *)sender {
-    [self.firstTf resignFirstResponder];
-    [self.secondTf resignFirstResponder];
+    /**
+     *  方法一：
+     //取消第一相应，回收键盘
+     [self.firstTf resignFirstResponder];
+     [self.secondTf resignFirstResponder];
+     */
+    
+    /**
+        方法二：
+     *  若当前视图及其子视图上有多个textField，可直接调用方法endEditing：来取消第一响应
+     */
+    [self.view endEditing:YES];
     self.scrollView.scrollEnabled = NO;
     self.scrollView.contentOffset = CGPointZero;
 }
